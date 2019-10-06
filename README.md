@@ -33,7 +33,7 @@ server {
 configuration.env - the environment file for configuration
 ```
 PORT=3000
-SERVER_NAME=exmple.com
+SERVER_NAME=example.com
 CERT_PATH=/home/example/cert
 CERT_KEY_PATH=/home/example/cert_key
 TRUSTED_CERT_PATH=/home/example/trusted_cert
