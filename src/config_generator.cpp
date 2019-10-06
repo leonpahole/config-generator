@@ -187,14 +187,14 @@ void config_generator::generate_file(const std::string &file_path, const std::st
     if (!out_file_path.empty()) {
         std::ofstream output_file(out_file_path);
         output_file << generated_file;
-        std::cout << "Wrote: " << file_path << std::endl;
+        std::cout << "Wrote: " << out_file_path << std::endl;
         output_file.close();
     }
 
     if (this->parameters->output_to_stdout) {
 
-        std::cout << "<<< " << file_path << " >>>" << std::endl
-                  << generated_file << std::endl << "<<< " << file_path << "end >>>" << std::endl << std::endl;
+        std::cout << "<<< " << out_file_path << " >>>" << std::endl
+                  << generated_file << std::endl << "<<< " << out_file_path << " end >>>" << std::endl << std::endl;
     }
 }
 
