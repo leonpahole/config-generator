@@ -178,7 +178,7 @@ void config_generator::generate_file(const std::string &file_path, const std::st
 
     template_file.close();
 
-    if(!if_statement_evaluations_stack.empty()) {
+    if (!if_statement_evaluations_stack.empty()) {
         throw std::runtime_error("Expected endif (check if every if statement has a corresponding endif)");
     }
 
