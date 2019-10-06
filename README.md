@@ -134,7 +134,3 @@ Examples of conditionals:
 Note: variables in IF statements will be replaced literally. 
 This means that for example ``%IF aaa%{LOCALE} IS PRODUCTION`` with ``LOCALE=production`` will be replaced with 
 ``IF aaaproduction IS PRODUCTION``, which will be evaluated as ``false``.
-
-#### Todo
-
-* Solve problem with letters in front of variable substitution, eg. ``a%{VARIABLE}``.
