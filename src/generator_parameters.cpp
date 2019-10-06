@@ -33,6 +33,8 @@ void generator_parameters::set_argument(const std::string &argument_name, const 
 
     if (argument_value.length() == 0) return;
 
+    this->display_help = false;
+
     if (argument_name == PARAM_ENV) {
         this->environment_files.push_back(argument_value);
     } else if (argument_name == PARAM_FILE) {
@@ -47,6 +49,8 @@ void generator_parameters::set_argument(const std::string &argument_name, const 
         this->definer = argument_value;
     } else if (argument_name == PARAM_CASE_SENSITIVE) {
         this->is_case_sensitive = argument_value != VALUE_FALSE;
+    } else {
+        this->display_help = true;
     }
 }
 
@@ -92,7 +96,7 @@ void generator_parameters::validate_params() {
     }
 
     // set output directory
-    if(this->uses_directory) {
+    if (this->uses_directory) {
         this->output_directory = this->output_files[0];
     }
 
@@ -182,7 +186,7 @@ void generator_parameters::print_help() {
               "The inputs will be mapped to outputs based on the sequence." << std::endl <<
               std::endl <<
               "``--stdout``: instead of writing to file, output the result to stdout." << std::endl <<
-              "Can be used with ``-out`` to combine writing to files and priting to stdout." <<  std::endl << std::flush;
+              "Can be used with ``-out`` to combine writing to files and priting to stdout." << std::endl << std::flush;
 }
 
 /*
@@ -192,6 +196,12 @@ bool generator_parameters::configure(int argc, char **argv) {
 
     try {
         this->get_params(argc, argv);
+
+        if (this->display_help) {
+            this->print_help();
+            return false;
+        }
+
         this->validate_params();
     }
     catch (std::runtime_error &error) {

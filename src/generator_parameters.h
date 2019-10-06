@@ -23,6 +23,8 @@ private:
     std::string definer = "%";
     bool is_case_sensitive = false;
 
+    bool display_help = true;
+
     friend class config_generator;
 
     void get_params(int argc, char **argv);
