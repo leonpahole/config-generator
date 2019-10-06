@@ -106,7 +106,9 @@ configuration-generator --env configuration.env --file configuration.template --
 
 #### Replacement
 
-To replace variables, use ``%{VARIABLE_NAME}``.
+To replace variables, use ``%{VARIABLE_NAME}``. 
+Please note that this will replace every pattern in text, even if the pattern is not separated with white space 
+(eg. ``hello%{VARIABLE_NAME}world``).
 
 #### Conditionals
 
@@ -115,8 +117,7 @@ The statement needs to end with ``%ENDIF`` to define a block that will be condit
 
 Conditions can include multiple conditionals, separated with logical operators ``AND`` and ``OR``.
 
-Condition has the structure ``VALUE_OR_VARIABLE COMPARATOR VALUE_OR_VARIABLE``. The left side needs to be a variable, 
-while the right side can be a variable or a value. Variables need to be preceded by ``%``.
+Condition has the structure ``VALUE_OR_VARIABLE COMPARATOR VALUE_OR_VARIABLE``. Variables need to be preceded by ``%``.
 
 Comparators are comparisons operators:
 
@@ -127,7 +128,12 @@ Examples of conditionals:
 
 * ``%IF %{PORT} IS 3000``
 * ``%IF %{SSL_ON} IS_NOT true``
+* ``%IF false IS_NOT %{SSL_ON}``
 * ``%IF %{LOCALE} IS %{MY_LOCALE}`` (comparing two variables)
+
+Note: variables in IF statements will be replaced literally. 
+This means that for example ``%IF aaa%{LOCALE} IS PRODUCTION`` with ``LOCALE=production`` will be replaced with 
+``IF aaaproduction IS PRODUCTION``, which will be evaluated as ``false``.
 
 #### Todo
 
