@@ -42,7 +42,7 @@ ENVIRONMENT=LOCAL
 
 Running 
 ```
-configuration-generator --env configuration.env --file configuration.template --out configuration.conf
+config-generator --env configuration.env --file configuration.template --out configuration.conf
 ```
 
 gives us configuration.conf as follows
@@ -57,7 +57,7 @@ server {
 
 ### Command-line arguments
 
-You can run ``configuration-generator`` with following parameters:
+You can run ``config-generator`` with following parameters:
 
 * ``--env``: path to environment file. You can specify more files by adding multiple ``-env`` flags. 
 If variables in files overlap, warnings will be issues, but the variable in latter file will take precedence.
@@ -87,19 +87,19 @@ Examples:
 
 ```
 # one env and one template file -> one output file
-configuration-generator --env configuration.env --file configuration.template --out configuration.conf
+config-generator --env configuration.env --file configuration.template --out configuration.conf
 
 # one env and multiple template files -> multiple output files
-configuration-generator --env configuration.env --file configuration.template --file configuration2.template --out configuration.conf --out configuration2.conf
+config-generator --env configuration.env --file configuration.template --file configuration2.template --out configuration.conf --out configuration2.conf
 
 # one env and one directory -> one output directory
-configuration-generator --env configuration.env --dir configuration-directory.template ---out configuration-directory
+config-generator --env configuration.env --dir configuration-directory.template ---out configuration-directory
 
 # multiple envs
-configuration-generator --env configuration.env --env configuration2.env --file configuration.template --out configuration.conf
+config-generator --env configuration.env --env configuration2.env --file configuration.template --out configuration.conf
 
 # printing to stdout instead of saving the files
-configuration-generator --env configuration.env --file configuration.template --stdout
+config-generator --env configuration.env --file configuration.template --stdout
 ```
 
 ### Language specification
