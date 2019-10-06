@@ -3,6 +3,16 @@
 This utility can generate configuration files on basis of conditionals and variable 
 substitution of environment file against a template file.
 
+### Install
+
+```
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+```
+
 ### Examples
 
 configuration.template - the template file for configuration
