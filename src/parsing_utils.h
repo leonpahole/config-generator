@@ -48,8 +48,8 @@ namespace parsing_utils {
         // find equals sign and split the string into two parts; right and left side of expression
         for (unsigned long i = 0; i < env_line.size(); i++) {
             if (env_line[i] == equal_sign) {
-                env_name = env_line.substr(0, i);
-                env_value = env_line.substr(i + 1);
+                env_name = string_utils::trim(env_line.substr(0, i));
+                env_value = string_utils::trim(env_line.substr(i + 1));
                 break;
             }
         }
