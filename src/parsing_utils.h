@@ -34,8 +34,8 @@ namespace parsing_utils {
 
         // check for amount of equal signs (=), should be exactly one
         if (equals_count == 0) {
-            error_stream << "No '" << equal_sign << "' characters found in non-empty environment line " << env_line
-                         << ".";
+            error_stream << "No '" << equal_sign << "' characters found in non-empty environment line '" << env_line
+                         << "'.";
             throw std::runtime_error(error_stream.str());
         } else if (equals_count > 1) {
             error_stream << "Multiple '" << equal_sign << "' characters (" << equals_count

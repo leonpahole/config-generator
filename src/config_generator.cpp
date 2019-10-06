@@ -47,7 +47,7 @@ void config_generator::read_env_file(const std::string &file_path) {
         catch (std::runtime_error &error) {
 
             // print error, but continue
-            std::cerr << "[ERROR] File: " << file_path << ", line: " << line_count << error.what() << std::endl;
+            std::cerr << "[ERROR] File: " << file_path << ", line: " << line_count << ": " << error.what() << std::endl;
             continue;
         }
 
@@ -259,8 +259,13 @@ void config_generator::generate_directory(const std::string &name, int indent, c
 
 void config_generator::generate_directories() {
 
-    mkdir(this->parameters->output_directory.c_str(), 0777);
-    this->generate_directory(this->parameters->template_directory, 0, this->parameters->output_directory);
+    try {
+        mkdir(this->parameters->output_directory.c_str(), 0777);
+        this->generate_directory(this->parameters->template_directory, 0, this->parameters->output_directory);
+    }
+    catch (std::runtime_error &error) {
+        std::cerr << error.what() << std::endl;
+    }
 }
 
 void config_generator::run() {
