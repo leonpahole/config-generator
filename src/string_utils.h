@@ -48,7 +48,7 @@ namespace string_utils {
         }
 
         if (i < str.length() - 1) {
-            return str.substr(0, i);
+            return str.substr(0, i + 1);
         }
 
         return str;
